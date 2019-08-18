@@ -1,0 +1,10 @@
+# Ignore all .dll files
+ *.dll
+
+# Ignore folder .vs and biit nary folders
+.vs/
+WebSocketApplicationReceiver/WebSocketApplicationReceiver/bin/
+WebSocketApplicationReceiver/WebSocketApplicationReceiver/obj/
+
+WebSocketApplicationSender/WebSocketApplicationSender/bin/
+WebSocketApplicationSender/WebSocketApplicationSender/obj/
