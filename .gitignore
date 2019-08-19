@@ -3,8 +3,8 @@
 
 # Ignore folder .vs and biit nary folders
 .vs/
-WebSocketApplicationReceiver/WebSocketApplicationReceiver/bin/
-WebSocketApplicationReceiver/WebSocketApplicationReceiver/obj/
+WebSocketApplicationWorker/WebSocketApplicationWorker/bin/
+WebSocketApplicationWorker/WebSocketApplicationWorker/obj/
 
 WebSocketApplicationSender/WebSocketApplicationSender/bin/
 WebSocketApplicationSender/WebSocketApplicationSender/obj/

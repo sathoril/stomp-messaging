@@ -33,7 +33,7 @@ namespace WebSocketApplicationSender.Classes
             : this(commandFrame, String.Empty, new Dictionary<string, string>()) { }
 
         public StompMessage(string commandFrame, string mensagem)
-            : this(commandFrame, String.Empty, new Dictionary<string, string>()) { }
+            : this(commandFrame, mensagem, new Dictionary<string, string>()) { }
 
         public StompMessage(string commandFrame, string bodyMessage, Dictionary<string, string> headers)
         {
