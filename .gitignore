@@ -5,6 +5,7 @@
 .vs/
 WebSocketApplicationWorker/WebSocketApplicationWorker/bin/
 WebSocketApplicationWorker/WebSocketApplicationWorker/obj/
+WebSocketApplicationWorker/WebSocketApplicationWorker/obj/
 
 WebSocketApplicationSender/WebSocketApplicationSender/bin/
 WebSocketApplicationSender/WebSocketApplicationSender/obj/

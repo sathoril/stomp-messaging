@@ -5,6 +5,7 @@ FROM rabbitmq:3-management
 
 VOLUME ["C:/docker/rabbitmq", "/var/lib/rabbitmq"]
 
+RUN rabbitmq-plugins enable rabbitmq_management
 RUN rabbitmq-plugins enable rabbitmq_stomp
 RUN rabbitmq-plugins enable rabbitmq_web_stomp
 

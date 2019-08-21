@@ -1,7 +1,9 @@
 ﻿using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 using System;
+using System.Diagnostics;
 using System.Text;
+using static Microsoft.AspNetCore.Hosting.Internal.HostingApplication;
 
 namespace WebSocketApplicationWorker
 {
@@ -18,9 +20,9 @@ namespace WebSocketApplicationWorker
         {
             string message = Encoding.UTF8.GetString(body);
 
-            Console.WriteLine($"Reading messages from queue: {consumerTag}");
-            Console.WriteLine($"----------------------------------------------------");
-            Console.WriteLine($"Message read --> {message}");
+            Debug.WriteLine($"Reading messages from queue: {consumerTag}");
+            Debug.WriteLine($"----------------------------------------------------");
+            Debug.WriteLine($"Message read --> {message}");
 
             this.rabbitmqChannel.BasicAck(deliveryTag, false);
         }

@@ -32,14 +32,13 @@ namespace WebSocketApplicationWorker
                 HostName = "localhost",
                 UserName = "guest",
                 Password = "guest",
-                VirtualHost = "/",
                 Port = 5672
             };
 
             // Creates the connection with RabbitMQ Server
             this.rabbitmqConnection = factory.CreateConnection();
 
-            // create channel  
+            // Create channel  
             this.rabbitmqChannel = this.rabbitmqConnection.CreateModel();
 
             // Implements the event when the connections is shutdown
@@ -64,32 +63,17 @@ namespace WebSocketApplicationWorker
         public Task ExecuteAsync(CancellationToken cancellationToken)
         {
             // Checks if the queue exists by the name passed as parameter, if not, creates it
-
             this.rabbitmqChannel.QueueDeclare(queue: QueueName,
-                                 durable: false,
+                                 durable: true,
                                  exclusive: false,
                                  autoDelete: false,
                                  arguments: null);
 
-
-            var consumer = new EventingBasicConsumer(this.rabbitmqChannel);
-            consumer.Received += (model, ea) =>
-            {
-                var body = ea.Body;
-                var message = Encoding.UTF8.GetString(body);
-                Console.WriteLine(" [x] Received {0}", message);
-            };
-
-            this.rabbitmqChannel.BasicConsume(queue: QueueName,
-                                 autoAck: true,
-                                 consumer: consumer);
-
-
             // Initiate the class that will handle the messages being consumed by the EventingBasicConsumer above
-            //var messageHandler = new MessageHandler(this.rabbitmqChannel);
+            var messageHandler = new MessageHandler(this.rabbitmqChannel);
 
             // Consume messages from the queue
-            //var consumer = this.rabbitmqChannel.BasicConsume(this.QueueName, false, messageHandler);
+            this.rabbitmqChannel.BasicConsume(this.QueueName, false, messageHandler);
 
             return Task.CompletedTask;
         }

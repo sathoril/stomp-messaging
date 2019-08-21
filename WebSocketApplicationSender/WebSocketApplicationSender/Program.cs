@@ -25,12 +25,20 @@ namespace WebSocketApplicationSender
 
                 stompProtocol.OpenConnection("guest", "guest");
 
-                for (int i = 0; i < 100; i++)
-                {
+                for(int i=0; i < 1000; i++)
+                { 
                     if (stompProtocol.IsConnectionOpen())
                     {
-                        Thread.Sleep(5000);
-                        stompProtocol.SendMessage($"Mensagem {i.ToString()}...");
+                        Thread.Sleep(500);
+
+                        double randomNumber = new Random().Next();
+
+                        if(randomNumber % 2 == 0)
+                            stompProtocol.SendMessage($"Mensagem {randomNumber.ToString()}...");
+                    }
+                    else
+                    {
+                        stompProtocol.OpenConnection("guest", "guest");
                     }
                 }
 
